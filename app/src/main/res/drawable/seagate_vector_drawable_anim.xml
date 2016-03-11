@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/seagate_vector_drawable" >
+    <target
+        android:name="logo"
+        android:animation="@anim/alpha" />
+    <target
+        android:name="company_name"
+        android:animation="@anim/bottom" />
+</animated-vector>
