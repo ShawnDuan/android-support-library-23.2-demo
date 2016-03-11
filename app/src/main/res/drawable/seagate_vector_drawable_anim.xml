@@ -3,8 +3,8 @@
     android:drawable="@drawable/seagate_vector_drawable" >
     <target
         android:name="logo"
-        android:animation="@anim/alpha" />
+        android:animation="@anim/blinking" />
     <target
         android:name="company_name"
-        android:animation="@anim/bottom" />
+        android:animation="@anim/up_and_down" />
 </animated-vector>
