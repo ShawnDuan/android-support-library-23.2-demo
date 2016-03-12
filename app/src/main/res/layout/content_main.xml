@@ -27,5 +27,23 @@
         android:layout_marginTop="50dp"
         app:srcCompat="@drawable/seagate_vector_drawable_anim" />
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingTop="50dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:text="Current Day/Night Mode: "/>
+        <TextView
+            android:id="@+id/current_night_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
 
 </LinearLayout>

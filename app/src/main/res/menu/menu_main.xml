@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.shawn_duan.android_support_library_232_demo.MainActivity">
     <item
+        android:id="@+id/day_mode"
+        android:title="Day Mode"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/night_mode"
+        android:title="Night Mode"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
