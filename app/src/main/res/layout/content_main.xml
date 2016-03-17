@@ -24,7 +24,7 @@
         android:id="@+id/anim_vector_drawable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         app:srcCompat="@drawable/seagate_vector_drawable_anim" />
 
     <LinearLayout
@@ -32,7 +32,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingTop="50dp">
+        android:background="@color/LightSkyBlue"
+        android:layout_marginTop="25dp"
+        android:padding="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,6 +46,30 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/open"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Open Bottom Sheet" />
 
+    <Button
+        android:id="@+id/collapse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/open"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Collapse Bottom Sheet" />
+
+    <Button
+        android:id="@+id/hide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/collapse"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp"
+        android:text="Hide Bottom Sheet" />
 
 </LinearLayout>
