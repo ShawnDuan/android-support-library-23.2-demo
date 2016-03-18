@@ -11,16 +11,17 @@
 
     <TextView
         android:id="@+id/heading"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="7dp"
         android:text="Collapsed"
         android:textSize="18sp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
         android:text="Main Content"
         android:textSize="20sp" />
 

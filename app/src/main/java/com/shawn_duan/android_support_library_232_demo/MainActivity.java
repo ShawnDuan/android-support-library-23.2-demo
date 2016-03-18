@@ -10,13 +10,12 @@ import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private static final String TAG = MainActivity.class.getName();
     private ImageView mAnimVectorDrawableImageView;
@@ -24,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private View mBottomSheet;
     private BottomSheetBehavior mBottomSheetBehavior;
     private Button btOpen, btCollapse, btHide;
-    TextView mHeading;
+    private Button btDayMode, btNightMode;
+    private TextView mHeading, mBottomSheetStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,33 +42,17 @@ public class MainActivity extends AppCompatActivity {
         btOpen = (Button) findViewById(R.id.open);
         btCollapse = (Button) findViewById(R.id.collapse);
         btHide = (Button) findViewById(R.id.hide);
+        btDayMode = (Button) findViewById(R.id.day_mode);
+        btNightMode = (Button) findViewById(R.id.night_mode);
+
+        btOpen.setOnClickListener(this);
+        btCollapse.setOnClickListener(this);
+        btHide.setOnClickListener(this);
+        btDayMode.setOnClickListener(this);
+        btNightMode.setOnClickListener(this);
+
         mHeading = (TextView) findViewById(R.id.heading);
-
-        //Handling movement of bottom sheets from buttons
-        btOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                mHeading.setText("Click on Open");
-                mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.Lime));
-            }
-        });
-
-        btCollapse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                mHeading.setText("Click on Collapse");
-                mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
-            }
-        });
-
-        btHide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-            }
-        });
+        mBottomSheetStatus = (TextView) findViewById(R.id.bottom_sheet_state);
 
         //Handling movement of bottom sheets from sliding
         mBottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -77,9 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 if (newState == BottomSheetBehavior.STATE_COLLAPSED) {
                     mHeading.setText("Collapsed");
                     mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
+                    mBottomSheetStatus.setText("Collapsed");
                 } else if (newState == BottomSheetBehavior.STATE_EXPANDED) {
                     mHeading.setText("Expanded");
                     mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.Lime));
+                    mBottomSheetStatus.setText("Expanded");
+                } else if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    mBottomSheetStatus.setText("Hidden");
                 }
             }
 
@@ -127,21 +115,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        if (id == R.id.day_mode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            recreate();
-            return true;
-        } else if (id == R.id.night_mode) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            recreate();
-            return true;
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.open:
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                mHeading.setText("Click on Open");
+                mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.Lime));
+                break;
+            case R.id.collapse:
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                mHeading.setText("Click on Collapse");
+                mHeading.setTextColor(ContextCompat.getColor(MainActivity.this, R.color.colorAccent));
+                break;
+            case R.id.hide:
+                mBottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                break;
+            case R.id.day_mode:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                recreate();
+                break;
+            case R.id.night_mode:
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                recreate();
+                break;
         }
-        return super.onOptionsItemSelected(item);
     }
 }
