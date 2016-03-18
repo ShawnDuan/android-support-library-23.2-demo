@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         tvCurrentDayNightMode = (TextView) findViewById(R.id.current_night_mode);
-
     }
 
     @Override
