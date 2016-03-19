@@ -7,7 +7,7 @@
     android:layout_height="300dp"
     android:background="#803F51B5"
     app:behavior_hideable="true"
-    app:behavior_peekHeight="70dp"
+    app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <TextView

@@ -32,6 +32,7 @@ public class ContentMainBehavior extends CoordinatorLayout.Behavior<LinearLayout
     public boolean onDependentViewChanged(CoordinatorLayout parent, LinearLayout child, View dependency) {
         Display display = ((WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         int x = dependency.getHeight() /300 * 70;      // this number should be the collapsed height (corresponding to app:behavior_peekHeight="70dp" in bottom_sheet_frame.xml)
+        x = parent.getResources().getDimensionPixelSize(R.dimen.bottom_sheet_peek_height);
         Point size = new Point();
         display.getSize(size);
         int screenHeight = size.y;
